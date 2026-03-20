@@ -3,7 +3,8 @@ import { toast } from "react-toastify";
 
 export const api = axios.create({
   baseURL: import.meta.env.VITE_API_URL || "http://localhost:5000/api",
-  withCredentials: true,
+  // 🍪 Cookie approach — commented out (blocked by browser cross-site policy)
+  // withCredentials: true,
   timeout: 10000,
 });
 
@@ -13,8 +14,22 @@ const SILENT_ROUTES = ["/auth/me"];
 // ✅ these routes show error toasts but never redirect to /login
 const AUTH_ROUTES = ["/auth/login", "/auth/signup"];
 
+// ✅ Attach token from localStorage to every request
+api.interceptors.request.use((config) => {
+  const token = localStorage.getItem("token");
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
+});
+
 api.interceptors.response.use(
   (response) => {
+    // ✅ Save token to localStorage on login/signup
+    if (response.data?.token) {
+      localStorage.setItem("token", response.data.token);
+    }
+
     const isSilent = SILENT_ROUTES.some((route) =>
       response.config.url?.includes(route)
     );
@@ -37,7 +52,7 @@ api.interceptors.response.use(
     }
 
     if (!error.response) {
-      toast.error("Network error.Check your connection.");
+      toast.error("Network error. Check your connection.");
       return Promise.reject(error);
     }
 
@@ -50,9 +65,10 @@ api.interceptors.response.use(
         // ✅ login/signup 401 — show the error message but DO NOT redirect
         toast.error(message);
       } else {
-        // ✅ other 401s — redirect only if not already on auth pages
+        // ✅ other 401s — clear token and redirect if not already on auth pages
         const authPages = ["/login", "/signup", "/"];
         if (!authPages.includes(window.location.pathname)) {
+          localStorage.removeItem("token"); // 👈 clear invalid token
           toast.error("Session expired. Please log in again.");
           window.location.href = "/login";
         }
@@ -60,7 +76,6 @@ api.interceptors.response.use(
     } else if (status === 403) {
       toast.error("You don't have permission to do that.");
     } else if (status === 404) {
-      // ✅ don't toast 404 on auth routes — "user not found" is shown via message
       if (!isAuthRoute) toast.error("Resource not found.");
       else toast.error(message);
     } else if (status >= 500) {
