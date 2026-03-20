@@ -35,12 +35,13 @@ exports.signup = async (req, res) => {
             ip === '127.0.0.1' ||
             ip === '::ffff:127.0.0.1';
 
-         if (!isLocalIP) {
-            try {
-                const geoRes = await fetch(`https://ipwho.is/${ip}`);
+        if (!isLocalIP) {
+        try {
+                // ip-api.com works fine from server — CORS doesn't apply to backend requests
+                const geoRes = await fetch(`http://ip-api.com/json/${ip}?fields=status,city`);
                 const geoData = await geoRes.json();
-                console.log('GeoIP result:', ip, geoData); // ← add this to debug
-                if (geoData.success && geoData.city) {
+                console.log('GeoIP result:', ip, geoData);
+                if (geoData.status === 'success' && geoData.city) {
                     city = geoData.city;
                 }
             } catch (geoErr) {
