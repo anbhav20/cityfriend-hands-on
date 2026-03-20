@@ -2,7 +2,7 @@ import SocialIcons from "./SocialIcons";
 
 const RightSide = () => {
   return (
-    <aside className="fixed right-0 top-0 h-screen w-60 bg-white border-l border-gray-100 flex flex-col px-5 py-7 z-40">
+    <aside className="fixed right-0 top-0 h-screen w-60 bg-gray-50 border-l border-gray-100 flex flex-col px-5 py-7 z-40">
 
       {/* Stay Connected */}
       <div>

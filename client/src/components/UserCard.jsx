@@ -10,7 +10,7 @@ const UserCard = ({ user }) => {
   return (
     <div
       onClick={openProfile}
-      className="flex items-center justify-between mt-2 gap-1  bg-white/80 backdrop-blur-sm px-2 sm:px-3 py-2 sm:py-3 rounded-xl sm:rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition cursor-pointer max-w-xl mx-auto"
+     className="flex items-center justify-between w-full backdrop-blur-sm px-2 sm:px-3 py-2 sm:py-3 rounded-lg cursor-pointer"
     >
       {/* User Info */}
         <Link
@@ -38,8 +38,8 @@ const UserCard = ({ user }) => {
         </Link>
 
       <button
-        onClick={(e) => e.stopPropagation()&& openProfile}
-        className="px-2 sm:px-3 py-1 text-xs sm:text-sm font-medium rounded-full bg-gray-200  hover:bg-gray-300 transition shrink-0"
+        onClick={(e) => { e.stopPropagation(); openProfile(); }}
+        className="px-2 sm:px-3 py-1 text-xs sm:text-sm  rounded-full bg-gray-200  hover:bg-gray-300 transition shrink-0"
       >
         View Profile
       </button>

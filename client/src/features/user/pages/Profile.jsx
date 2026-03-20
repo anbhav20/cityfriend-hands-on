@@ -98,14 +98,14 @@ const Profile = () => {
 
   return (
     <MainLayout>
-      <main className="min-h-screen bg-gray-50">
+      <main className="min-h-screen ">
 
         <TopBar
           username={profileUser.username}
           isOwnProfile={isOwnProfile}
         />
 
-        <div className="max-w-3xl mx-auto px-2 sm:px-10">
+        <div className="w-full px-2 sm:px-2">
           <ProfileInfo
             user={profileUser}
             isOwnProfile={isOwnProfile}

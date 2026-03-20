@@ -1,7 +1,6 @@
 const SkeletonPost = () => {
   return (
-    <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden animate-pulse max-w-xl mx-auto">
-
+   <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden animate-pulse w-full">
       {/* Header */}
       <div className="flex items-center gap-2.5 sm:gap-3 px-3 sm:px-4 py-2.5 sm:py-3">
 
@@ -14,8 +13,7 @@ const SkeletonPost = () => {
 
       </div>
 
-      {/* Image Skeleton */}
-      <div className="w-full h-64 sm:h-80 bg-gray-300"></div>
+        <div className="w-full h-75 sm:h-100 bg-gray-300"></div>
 
       {/* Actions */}
       <div className="flex gap-4 px-3 sm:px-4 py-2.5 sm:py-3">

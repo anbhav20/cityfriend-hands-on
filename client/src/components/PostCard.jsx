@@ -23,10 +23,10 @@ const PostCard = ({ post }) => {
   };
 
   return (
-    <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+    <div className="bg-white/60 border border-gray-100 rounded-xl overflow-hidden w-full">
 
       {/* ── Header ── */}
-      <div className="flex items-center justify-between px-4 py-3">
+      <div className="flex items-center justify-between px-2 py-2">
 
         <Link
           to={`/${post.user?.username}`}
@@ -36,7 +36,7 @@ const PostCard = ({ post }) => {
             <img
               src={post.user?.profilePic || "/default-avatar.png"}
               alt="pfp"
-              className="w-9 h-9 rounded-full object-cover border border-gray-200"
+              className="w-10 h-10 lg:w-15 lg:h-15 rounded-full object-cover border border-gray-200"
             />
             {/* Online dot */}
             <span className="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-green-400 border-2 border-white" />
@@ -51,7 +51,7 @@ const PostCard = ({ post }) => {
               {post.user?.city || "Unknown"}
               {post.createdAt && (
                 <>
-                  <span className="mx-1 text-gray-200">·</span>
+                  <span className="mx-1 text-gray-800">·</span>
                   {timeAgo(post.createdAt)}
                 </>
               )}
@@ -60,7 +60,7 @@ const PostCard = ({ post }) => {
         </Link>
 
         <div className="flex items-center gap-2">
-          <button className="text-xs font-semibold text-blue-500 hover:text-blue-600 bg-blue-50 hover:bg-blue-100 px-3 py-1 rounded-full transition">
+          <button className="text-xs lg:text-sm font-semibold text-blue-500 hover:text-blue-600 px-3 py-1 rounded-full transition">
             Follow
           </button>
           <button className="text-gray-400 hover:text-gray-600 p-1 rounded-full hover:bg-gray-100 transition">
@@ -72,17 +72,17 @@ const PostCard = ({ post }) => {
 
       {/* ── Image ── */}
       {post.image && (
-        <div className="w-full bg-gray-50">
+       <div className="w-full bg-black">
           <img
             src={post.image}
             alt="post"
-            className="w-full object-cover max-h-125"
+            className="w-full object-contain max-h-125 min-h-75"
           />
         </div>
       )}
 
       {/* ── Actions ── */}
-      <div className="flex items-center justify-between px-4 pt-3 pb-1">
+      <div className="flex items-center justify-between px-4 pt-2 ">
         <div className="flex items-center gap-4">
 
           {/* Like */}
@@ -138,7 +138,7 @@ const PostCard = ({ post }) => {
 
       {/* ── Caption ── */}
       {post.caption && (
-        <div className="px-4 pb-4 pt-2 text-sm text-gray-800 leading-relaxed">
+        <div className="px-4 py-2 text-sm text-gray-800 leading-relaxed">
           <Link
             to={`/${post.user?.username}`}
             className="font-semibold text-gray-900 hover:text-blue-600 transition mr-1.5"

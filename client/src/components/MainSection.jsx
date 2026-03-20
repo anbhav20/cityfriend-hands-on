@@ -65,7 +65,7 @@ const MainSection = () => {
                   w-12 h-12 sm:w-14 sm:h-14
                   flex items-center justify-center
                   rounded-xl
-                  bg-gradient-to-r from-blue-500 to-sky-400
+                  bg-linear-to-r from-blue-500 to-sky-400
                   text-white text-xl
                 "
               >

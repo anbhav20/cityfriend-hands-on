@@ -84,11 +84,10 @@ const Home = () => {
 
   return (
     <MainLayout>
-      <main className="min-h-screen bg-gray-50 px-2 py-3">
-        <div className="max-w-xl mx-auto space-y-2">
-
+      <main className="min-h-screen py-3">
+        <div className="w-full max-w-xl mx-auto space-y-2 px-0 sm:px-2">
           {/* ── Create Post ── */}
-          <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-2 sm:p-3">
+          <div className="bg-white/60 rounded-2xl  p-2 sm:p-3">
             <h2 className="text-sm font-semibold text-gray-800 mb-2">Create Post</h2>
 
             <textarea
@@ -159,10 +158,10 @@ const Home = () => {
               <button
                 type="button"
                 onClick={uploadPost}
-                disabled={uploading || (!file && !caption.trim())} // ✅ disable when nothing to post
+                disabled={uploading || (!file && !caption.trim())} 
                 className="
                   px-5 py-2 rounded-xl text-sm font-medium text-white
-                  bg-gradient-to-r from-blue-600 to-sky-400
+                  bg-linear-to-r from-blue-600 to-sky-400
                   hover:scale-105 transition shadow-sm shadow-blue-100
                   disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:scale-100
                 "
@@ -176,7 +175,7 @@ const Home = () => {
           {loading ? (
             Array.from({ length: 3 }, (_, i) => <SkeletonPost key={i} />) // ✅ no repeated JSX
           ) : posts.length === 0 ? (
-            <div className="bg-white rounded-2xl border border-gray-100 shadow-sm py-14 text-center">
+            <div className="bg-white/60 rounded-xl shadow-sm py-10 text-center">
               <p className="text-2xl mb-2">🏙️</p>
               <p className="text-sm font-medium text-gray-700">No posts yet</p>
               <p className="text-xs text-gray-400 mt-1">

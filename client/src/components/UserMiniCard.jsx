@@ -17,8 +17,8 @@ const UserMiniCard = memo(({ profilePic, username, city, to, active, variant = "
           src={profilePic}
           alt="avatar"
           className={`
-            h-6 w-6 rounded-full object-cover shrink-0
-            ${active ? "ring-2 ring-blue-500 ring-offset-1" : "ring-1 ring-gray-200"}
+            h-5 w-5 rounded-full object-cover shrink-0
+            ${active ? "ring-1 ring-blue-500 ring-offset-1" : "ring-1 ring-gray-200"}
           `}
         />
         <span className="text-[10px]">Profile</span>

@@ -2,37 +2,30 @@ import Sidebar from "../components/Sidebar";
 import BottomNav from "./BottomNav";
 import RightSide from "./RightSide";
 
-/**
- * Layout structure:
- *
- * Desktop (lg+):
- *   [Sidebar fixed 64px] [main content scrollable, mx-auto capped] [RightSide fixed 240px]
- *   The main content has left/right padding to stay clear of both fixed panels.
- *
- * Mobile (< lg):
- *   Full-width content with padding-bottom so it never hides behind the fixed BottomNav.
- */
 const MainLayout = ({ children }) => {
   return (
     <>
-      {/* ── Desktop ── */}
-      <div className="hidden lg:block min-h-screen bg-gray-50">
+      {/* ── Desktop (lg+) ── */}
+      <div className="hidden lg:flex min-h-screen">
+
         {/* Fixed left sidebar */}
         <Sidebar />
+
+        {/* Scrollable centre column */}
+        <div className="ml-64 mr-60 flex-1 min-h-screen px-4 py-1">
+          <div className="max-w-xl mx-auto">
+            {children}
+          </div>
+        </div>
 
         {/* Fixed right panel */}
         <RightSide />
 
-        {/* Scrollable centre column — clear of both fixed panels */}
-        <div className="ml-64 mr-60 min-h-screen">
-          {children}
-        </div>
       </div>
 
-      {/* ── Mobile ── */}
-      <div className="lg:hidden min-h-screen bg-gray-50">
-        {/* pb-20 keeps content above the fixed BottomNav (h ~56px + safe area) */}
-        <div className="pb-20">
+      {/* ── Mobile (< lg) ── */}
+      <div className="lg:hidden min-h-screen w-full overflow-x-hidden">
+        <div className="pb-20 w-full">
           {children}
         </div>
         <BottomNav />

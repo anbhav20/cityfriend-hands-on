@@ -46,8 +46,8 @@ const Explore = () => {
 
   return (
     <MainLayout>
-      <main className="min-h-screen bg-gray-50 px-4 py-5">
-        <div className="max-w-xl mx-auto space-y-4">
+      <main className="min-h-screen bg-gray-50 py-2">
+        <div className="w-full space-y-3 px-1">
 
           <div>
             <h1 className="text-xl font-bold text-gray-900">Find Friends</h1>
@@ -103,7 +103,7 @@ const Explore = () => {
             </p>
           )}
 
-          <div className="space-y-3">
+          <div className="space-y-2">
             {isFetching ? ( // ✅ use local isFetching — not context loading
               Array.from({ length: 4 }, (_, i) => <UserSkeleton key={i} />)
             ) : filteredUsers.length === 0 ? (

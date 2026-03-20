@@ -5,10 +5,10 @@ import { useAuth } from "../features/auth/hooks/useAuth";
 import UserMiniCard from "./UserMiniCard";
 
 const NAV = [
-  { to: "/home",          icon: FiHome,          label: "Home"    },
-  { to: "/search",        icon: FiSearch,        label: "Explore" },
-  { to: "/chats",         icon: FiMessageCircle, label: "Chats"   },
-  { to: "/notifications", icon: FiBell,          label: "Alerts"  },
+  { to: "/home",          icon: FiHome,            },
+  { to: "/search",        icon: FiSearch,          },
+  { to: "/chats",         icon: FiMessageCircle,   },
+  { to: "/notifications", icon: FiBell,            },
 ];
 
 const BottomNav = memo(() => {
@@ -32,7 +32,7 @@ const BottomNav = memo(() => {
               className={`
                 flex flex-col items-center justify-center gap-0.5 flex-1 h-full
                 text-xs font-medium transition
-                ${active ? "text-blue-600" : "text-gray-400 hover:text-gray-600"}
+                ${active ? "text-blue-600" : "text-gray-700 hover:text-gray-900"}
               `}
             >
               <Icon size={20} strokeWidth={active ? 1.5 : 1.8} />
