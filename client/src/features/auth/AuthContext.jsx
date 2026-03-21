@@ -53,4 +53,3 @@ export const AuthProvider = ({ children }) => {
     </AuthContext.Provider>
   );
 };
-// ✅ useAuth removed — it lives in hooks/useAuth.js
